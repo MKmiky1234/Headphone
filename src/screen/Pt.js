@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 
+
 const Login = () => {
     const [email, setEmail] = useState('');
-    const [result, setResult] = useState(null); // State to store API result
+    const [result, setResult] = useState(null); 
     const [errors, setErrors] = useState({ email: '', password: '' });
     const [data,setData] = useState([])
+    
     useEffect(() => {
         const loadUserData = async () => {
             try {
@@ -28,7 +30,7 @@ const Login = () => {
 
         if (!email) {
             formIsValid = false;
-            newErrors.email = 'Email is required';
+            newErrors.email = 'Input is required';
         }
 
         setErrors(newErrors);
@@ -48,28 +50,39 @@ const Login = () => {
     console.log('data',data)
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container,{padding:20, backgroundColor:"lightgray"}]}>
+            <View style={{alignItems:'center'}}>
             <Text style={styles.title}>Dictionary</Text>
+            </View>
+            
             <TextInput
+            
                 placeholder="Search here"
                 value={email}
                 onChangeText={text => setEmail(text)}
                 style={styles.input}
             />
+       
             {errors.email ? <Text style={styles.error}>{errors.email}</Text> : null}
-
+        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{flexGrow:1,paddingBottom:20}}>
            {
             data.map((item,index)=>{
            return(
-                <Text key={index}>
+            <View key={index} style={{marginTop:10}}>
+                <Text style={{alignSelf:'flex-start',fontSize:20}}>
                     {item.definition}
                 </Text>
+                </View>
            )
             })
            }
-            <TouchableOpacity onPress={handleLogin} style={styles.button}>
+           <TouchableOpacity onPress={handleLogin} style={styles.button}>
+            <View style={{alignSelf:'center'}}>
                 <Text style={styles.buttonText}>Submit</Text>
+                </View>
             </TouchableOpacity>
+           </ScrollView>
+            
 
             {result && (
                 <View style={styles.resultContainer}>
@@ -85,8 +98,9 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
+        // alignItems: 'center',
         paddingHorizontal: 20,
+
     },
     title: {
         fontSize: 24,
