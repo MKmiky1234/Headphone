@@ -10,6 +10,7 @@ import { Provider } from 'react-redux'
 import { persistor, store } from './src/redux/Store'
 import { PersistGate } from 'redux-persist/integration/react';
 import Pt from './src/screen/Pt'
+import Appointment from './src/screen/Appointment'
 
 
 
@@ -24,7 +25,8 @@ const App = () => {
           {/* <MyStack/> */}
           {/* <Login/> */}
           {/* <Home /> */}
-          <Pt/>
+          {/* <Pt/> */}
+          <Appointment/>
 
 
 

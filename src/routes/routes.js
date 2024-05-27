@@ -7,6 +7,7 @@ import 'react-native-gesture-handler';
 import Login from '../screen/Login';
 import Home from '../screen/Home';
 import Pt from '../screen/Pt';
+import Appointment from '../screen/Appointment';
 
 
 
@@ -20,6 +21,7 @@ function MyStack() {
                 <Stack.Screen name='Login' component={Login} />
                 <Stack.Screen name='Home' component={Home} />
                 <Stack.Screen name='Pt' component={Pt} />
+                <Stack.Screen name='Appointment' component={Appointment} />
                 
                 
                

@@ -9,7 +9,9 @@ const Login = () => {
     const [result, setResult] = useState(null); 
     const [errors, setErrors] = useState({ email: '', password: '' });
     const [data,setData] = useState([])
-    
+    const arr = ['abc','def','ghi','1',6,'Muskan']
+    const arr2 = ['developer',544,...arr,]
+    console.log('arr2',arr2)
     useEffect(() => {
         const loadUserData = async () => {
             try {
@@ -46,15 +48,15 @@ const Login = () => {
                     console.error('Error fetching data:', error);
                 });
         }
-    };
+    }; 
     console.log('data',data)
 
     return (
-        <View style={[styles.container,{padding:20, backgroundColor:"lightgray"}]}>
+        <View style={[styles.container,{padding:20, backgroundColor:"lightblue"}]}>
             <View style={{alignItems:'center'}}>
             <Text style={styles.title}>Dictionary</Text>
             </View>
-            
+         
             <TextInput
             
                 placeholder="Search here"
